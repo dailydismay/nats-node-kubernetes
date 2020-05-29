@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: moderation-depl
+  labels:
+    name: moderation
+spec:
+  containers:
+    - name: moderation
+      image: zabozlaev/moderation:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-srv
+spec:
+  selector:
+    app: moderation
+  ports:
+    - protocol: TCP
+      port: 4003
+      targetPort: 4003

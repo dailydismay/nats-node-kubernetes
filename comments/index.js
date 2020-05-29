@@ -30,7 +30,7 @@ app
       content,
       status: "pending",
     });
-    await axios.post("http://localhost:4005/events", {
+    await axios.post("http://event-bus-srv:4005/events", {
       type: "CommentCreated",
       data: {
         id: commentId,
@@ -49,7 +49,7 @@ app
       const comments = commentsForPostId[postId];
       const comment = comments.find((x) => x.id === id);
       comment.status = status;
-      await axios.post("http://localhost:4005/events", {
+      await axios.post("http://event-bus-srv:4005/events", {
         type: "CommentUpdated",
         data: { id, postId, status, content },
       });
